@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import backgroundImage from '../../public/BG.png'; // Ersetze durch deinen Bildpfad
+import backgroundImage from '../../public/BG.png';
 
 function Homepage() {
     return (

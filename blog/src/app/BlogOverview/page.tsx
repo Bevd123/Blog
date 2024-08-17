@@ -1,67 +1,81 @@
 "use client"
 
 import React from 'react';
+import Image from 'next/image';
 import { useState } from 'react';
 import Link from 'next/link';
 
-// ... (Rest deiner Import-Anweisungen)
 
-function BlogOverview() {
-  const [posts, setPosts] = useState([
-    // Hier fügst du deine Blogbeiträge als Array hinzu
-    {
-      title: 'Mein erster Blogbeitrag',
-      description: 'In diesem Beitrag geht es um...',
-      date: '10.01.2024',
-      image: '/images/post1.jpg',
-      slug: "nA",
-    },{
-        title: 'Mein Zweiter Blogbeitrag',
-        description: 'In diesem Beitrag geht es um...',
-        date: '10.01.2024',
-        image: '/images/post1.jpg',
-        slug: "nA",
-      },{
-        title: 'Mein Dritter Blogbeitrag',
-        description: 'In diesem Beitrag geht es um...',
-        date: '10.01.2024',
-        image: '/images/post1.jpg',
-        slug: "nA",
-      },{
-        title: 'Mein Vierter Blogbeitrag',
-        description: 'In diesem Beitrag geht es um...',
-        date: '10.01.2024',
-        image: '/images/post1.jpg',
-        slug: "nA",
-      },
-  ]);
+const travelOffers = [
+  {
+    id: 1,
+    title: 'Bali Ballspiele',
+    image: '/BG.png',
+    description: 'Surfen, Vulkane und Traumstrände',
+    price: 'ab 999€',
+    link: '/bali'
+  },{
+    id: 2,
+    title: 'Nepaler Berge',
+    image: '/BG.png',
+    description: 'Surfen, Vulkane und Traumstrände',
+    price: 'ab 999€',
+    link: '/bali'
+  },{
+    id: 3,
+    title: 'Mehr Nepa',
+    image: '/BG.png',
+    description: 'Surfen, Vulkane und Traumstrände',
+    price: 'ab 999€',
+    link: '/bali'
+  },{
+    id: 4,
+    title: 'Malle Saufen',
+    image: '/BG.png',
+    description: 'Surfen, Vulkane und Traumstrände',
+    price: 'ab 999€',
+    link: '/bali'
+  },
+];
 
-  // ... (Filterfunktionen für Kategorien, Tags, Datum)
+function HomePage() {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredOffers = travelOffers.filter(offer =>
+    offer.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
-    <div className="container mx-auto px-4">
-      <h1 className="text-3xl font-bold mb-4">Alle Blogbeiträge</h1>
+    <div className="bg-white">
+      <div className="container mx-auto py-12">
+        <h1 className="text-3xl text-black font-bold text-center mb-8">Dein nächstes Abenteuer wartet!</h1>
 
-      {/* Filteroptionen (optional) */}
-      {/* ... */}
+        <input
+          type="text"
+          placeholder="Suche nach deinem Traumziel"
+          className="border border-gray-300 rounded-md p-2"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {posts.map((post) => (
-          <div key={post.title} className="bg-white text-black shadow-md rounded-lg p-6">
-            <img src={post.image} alt={post.title} className="rounded-t-lg mb-4" />
-            <h2 className="text-xl font-bold mb-2">{post.title}</h2>
-            <p className="text-gray-700">{post.description}</p>
-            <Link href={`/posts/${post.slug}`} className="text-blue-500 hover:underline">
-              Weiterlesen
-            </Link>
-          </div>
-        ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+          {filteredOffers.map(offer => (
+            <div key={offer.id} className="bg-gray-100 rounded-lg p-6">
+              <Image src={offer.image} alt={offer.title} width={500} height={300} />
+              <h3 className="text-xl font-bold text-black">{offer.title}</h3>
+              <p className="text-black">{offer.description}</p>
+              <p className="text-blue-500 font-bold">Ab {offer.price}</p>
+              <Link href={offer.link}>
+                <button className="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded">
+                  Jetzt buchen!
+                </button>
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
-
-      {/* Pagination (optional) */}
-      {/* ... */}
     </div>
   );
 }
 
-export default BlogOverview;
+export default HomePage;
