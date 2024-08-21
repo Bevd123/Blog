@@ -9,31 +9,73 @@ import Link from 'next/link';
 const travelOffers = [
   {
     id: 1,
-    title: 'Bali Ballspiele',
+    title: 'Annapurna Circuit',
     image: '/BG.png',
     description: 'Surfen, Vulkane und Traumstrände',
-    price: 'ab 999€',
+    price: '1200',
     link: '/bali'
   },{
     id: 2,
-    title: 'Nepaler Berge',
+    title: 'Everest Basecamp',
     image: '/BG.png',
     description: 'Surfen, Vulkane und Traumstrände',
-    price: 'ab 999€',
+    price: '1400',
     link: '/bali'
   },{
     id: 3,
-    title: 'Mehr Nepa',
+    title: 'Annapurna Basecamp',
     image: '/BG.png',
     description: 'Surfen, Vulkane und Traumstrände',
-    price: 'ab 999€',
+    price: '1000',
     link: '/bali'
   },{
     id: 4,
-    title: 'Malle Saufen',
+    title: 'Langtang Valley',
     image: '/BG.png',
     description: 'Surfen, Vulkane und Traumstrände',
-    price: 'ab 999€',
+    price: '700',
+    link: '/bali'
+  },{
+    id: 5,
+    title: 'Manaslu Circuit',
+    image: '/BG.png',
+    description: 'Surfen, Vulkane und Traumstrände',
+    price: '1400',
+    link: '/bali'
+  },{
+    id: 6,
+    title: 'Ghorepani Poon Hill',
+    image: '/BG.png',
+    description: 'Surfen, Vulkane und Traumstrände',
+    price: '800',
+    link: '/bali'
+  },{
+    id: 7,
+    title: 'Upper Mustang',
+    image: '/BG.png',
+    description: 'Surfen, Vulkane und Traumstrände',
+    price: '1000',
+    link: '/bali'
+  },{
+    id: 8,
+    title: 'Kanchanjunga',
+    image: '/BG.png',
+    description: 'Surfen, Vulkane und Traumstrände',
+    price: '1800',
+    link: '/bali'
+  },{
+    id: 9,
+    title: 'Makalu Basecamp',
+    image: '/BG.png',
+    description: 'Surfen, Vulkane und Traumstrände',
+    price: '1200',
+    link: '/bali'
+  },{
+    id: 10,
+    title: 'Rara Lake',
+    image: '/BG.png',
+    description: 'Surfen, Vulkane und Traumstrände',
+    price: '1500',
     link: '/bali'
   },
 ];
@@ -53,7 +95,7 @@ function HomePage() {
         <input
           type="text"
           placeholder="Suche nach deinem Traumziel"
-          className="border border-gray-300 rounded-md p-2"
+          className="text-black border border-gray-300 rounded-md p-2"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -64,7 +106,7 @@ function HomePage() {
               <Image src={offer.image} alt={offer.title} width={500} height={300} />
               <h3 className="text-xl font-bold text-black">{offer.title}</h3>
               <p className="text-black">{offer.description}</p>
-              <p className="text-blue-500 font-bold">Ab {offer.price}</p>
+              <p className="text-blue-500 font-bold">Ab {offer.price}$</p>
               <Link href={offer.link}>
                 <button className="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded">
                   Jetzt buchen!
